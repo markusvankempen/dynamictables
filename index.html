@@ -1,0 +1,240 @@
+<!DOCTYPE HTML>
+<!--
+* * 
+* This program display the export and table parameter dynamically
+* Author: Markus van Kempen - mvk@ca.ibm.com
+*
+data/json structure is like (sap/mfcall/ZMVKRFCEXAMPLE?format=json)
+{
+    "EXPORTPARA1": "Hello",
+    "EXPORTPARA2": "World",
+    "BIGSTRUCTURETBL": [
+        {
+            "FIELDNAME1": "TABREC11",
+            "FIELDNAME2": "TABREC12",
+            "FIELDNAME3": "TABREC13",
+            "FIELDNAME4": "TABREC14",
+            "FIELDNAME5": "TABREC15",
+            "FIELDNAME6": "TABREC16",
+            "FIELDNAME7": "TABREC17",
+            "FIELDNAME8": "TABREC18"
+        }
+    ],
+    "DATATBL": [
+        {
+            "FIELDNAME1": "VALUE 11",
+            "FIELDNAME2": "VALUE 12"
+        },
+        {
+            "FIELDNAME1": "VALUE 21",
+            "FIELDNAME2": "VALUE 22"
+        },
+        {
+            "FIELDNAME1": "VALUE 31",
+            "FIELDNAME2": "VALUE 32"
+        },
+        {
+            "FIELDNAME1": "VALUE 41",
+            "FIELDNAME2": "VALUE 42"
+        }
+    ]
+}
+ Note: Table with one entry are displayed in two columns one with Key(fieldname) and one with Values
+ 
+-->
+<html>
+       <head>
+              <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <script src="https://sapui5.netweaver.ondemand.com/resources/sap-ui-core.js"
+                      id="sap-ui-bootstrap"
+                      data-sap-ui-libs="sap.ui.commons,sap.ui.core,sap.ui.table"
+                      data-sap-ui-theme="sap_goldreflection" >
+              </script>
+<script>
+//         alert("start");
+$( document ).ready(function() {
+//        jQuery.sap.log.setLevel(jQuery.sap.log.LogLevel['INFO']);
+        console.log("###Sart", "RFC Data Parsing", "########");
+     // 1st Level Parameter Table tab (EXPORTPARAM -Fixed name)
+        var oTable1L = new sap.ui.table.Table("oTable1L", {
+               title: "EXPORTPARAM",
+               visibleRowCount: 15,
+               firstVisibleRow: 0,
+//               selectionMode: sap.ui.table.SelectionMode.Single
+                 });
+
+       oTable1L.addColumn(new sap.ui.table.Column({
+             label: new sap.ui.commons.Label({text: "FIELDNAMES"}),
+             template: new sap.ui.commons.Label().bindProperty("text", "FIELDNAMES"),
+             width: "10%"
+       }));
+
+       oTable1L.addColumn(new sap.ui.table.Column({
+             label: new sap.ui.commons.Label({text: "VALUES"}),
+             template: new sap.ui.commons.TextField().bindProperty("value", "VALUES"),
+             width: "25%"
+       }));
+
+
+       //adding all elements of the structure as colums dyamicaly
+       var oEXPORTPARAM =  {EXPORTPARAMTBL:[
+                                 //      {KEY: "k", VALUE: "v"}
+                                       ]
+                       };
+        var oTBL =  {TBL:[
+                                       //      {KEY: "k", VALUE: "v"}
+                                             ]
+                             };
+//build a little UI to start with
+
+              oTabStrip1 = new sap.ui.commons.TabStrip("TABSTRIP");
+              oTabStrip1.setWidth("100%");
+   	          oTabStrip1.setTooltip("TABSTRIP");
+              oTabStrip1.placeAt("content");
+              
+         //// Get the DATA
+        var oData;
+    	var oModel = new sap.ui.model.json.JSONModel();  
+    	sap.ui.getCore().setModel(oModel);
+    	
+        console.log("Query", "JSON CALL", "########");
+    
+		$.ajax({
+		//	url: "data.json",
+			url: "data1.json",
+//			url: "http://api.openweathermap.org/data/2.5/weather?q=Toronto",
+//			url: "http://services.odata.org/V3/Northwind/Northwind.svc/Orders?$format=json",
+//			url: "data0.json",	 // added structure		
+//			url: "data2.json",
+//			url: "data3.json", // complex data
+			
+		    contentType: 'application/json; charset=utf-8',
+		    type: 'GET',
+		    dataType: 'json',
+		    error: function (xhr, status) {
+			alert(status);
+		    },
+		    success: function (result) {
+//			console.log(result);
+			oModel.setData(result);
+			handleSuccess(result);
+		    }
+		});
+              
+
+// AJAX call Successfull 
+function handleSuccess(ocheckData){
+
+        // GETDATA
+       oData =sap.ui.getCore().getModel().getData();    
+  
+//  ... check if structure has all critical elements        
+//       if (typeof oData.RETURNTBL == "undefined")
+//        alert ('Valid NO DATA');
+
+       console.log("####", " Parsing the Data",eval("oData.length"));
+
+        var oTable = [];
+        var oTableSR = [];
+      $.each(oData,function(name, value) {
+    	  console.log("####TABLE", "NAME:"+name, name+".length:"+ eval("oData."+name+".length"));      
+          // A Table with mutltile rows ?    	  
+    	  if((eval("oData."+name+".length") >1) && (jQuery.type(value) == "array")){
+    	              console.log("####TABLE", "MultipleROW", jQuery.type(value));
+        
+//			         console.log ("####CreateMultipleROWTableUI",name +":" , jQuery.type(value));
+          oTable[name] = new sap.ui.table.Table(name, {
+                  title: name,
+                  visibleRowCount: 15,
+                  firstVisibleRow: 0,
+            });
+
+        // Add colum names and data   
+        $.each(value, function(a,o) {
+          //console.log("RETURNTBL", a, o);
+         if(a<1)     /// only go thru one stucture
+          $.each(this, function(k, v) {
+            oTable[name].addColumn(new sap.ui.table.Column({
+                  label: new sap.ui.commons.Label({text: k}),
+                  template: new sap.ui.commons.Label().bindProperty("text", k),
+                  sortProperty: "type",
+                  filterProperty: "type",
+                  width: "10%"
+            }));
+           });// $.each(this, function(k, v) {
+        });//$.each(value, function(a,o) {
+
+        oTable[name].bindRows("/"+name);
+        oTabStrip1.createTab (name, oTable[name]);
+      }else if ( (eval("oData."+name+".length") ==1) && (jQuery.type(value) == "array"))
+        {
+          console.log("####"+name+" SINGELROW" +"  Type:"+jQuery.type(value) ,"SIZE:"+ eval("oData."+name+".length"));
+          oTableSR[name] = new sap.ui.table.Table(name, {
+                    title: name,
+                    visibleRowCount: 15,
+                    firstVisibleRow: 0,
+                      });
+          oTableSR[name].addColumn(new sap.ui.table.Column({
+                  label: new sap.ui.commons.Label({text: "FIELDNAMES"}),
+                  template: new sap.ui.commons.Label().bindProperty("text", "FIELDNAMES"),
+                  sortProperty: "FIELDNAMES",
+                  filterProperty: "FIELDNAMES",
+                  width: "20%"
+            }));
+          oTableSR[name].addColumn(new sap.ui.table.Column({
+                  label: new sap.ui.commons.Label({text: "VALUES"}),
+                  template: new sap.ui.commons.TextField().bindProperty("value", "VALUES"),
+                  sortProperty: "VALUES",
+                  filterProperty: "VALUES",
+                  width: "75%"
+            }));
+
+          // reuse oTBL to transpose table entries
+          $.each(value, function() {
+              $.each(this, function(k, v) {
+//              eval("oTBL."+name+".push({KEY: k, VALUE: v})");
+                oTBL.TBL.push({FIELDNAMES: k, VALUES: v});
+
+              });
+          });
+          
+          oData = jQuery.extend(oData,oTBL);
+          sap.ui.getCore().getModel().setData(oData, false);
+
+          oTableSR[name].bindRows("/TBL"); //"+name);
+          oTabStrip1.createTab (name, oTableSR[name]);
+
+      }else{
+          console.log("####EXPORTPARM", name, value);
+          oEXPORTPARAM.EXPORTPARAMTBL.push({FIELDNAMES: name, VALUES: value});
+
+		// EXPORTPARAMETER already processed
+    	  console.log("####:"+name+"  Type:"+jQuery.type(value) ,"SIZE:"+ eval("oData."+name+".length"));
+      }//else
+      });//$.each(sap.ui.getCore().getModel().getData(),
+
+      // Added Export Parameter Tab
+      oData = jQuery.extend(oData,oEXPORTPARAM);
+      sap.ui.getCore().getModel().setData(oData, false);
+
+      oTable1L.bindRows("/EXPORTPARAMTBL");
+      oTabStrip1.createTab ("EXPORTPARAM",oTable1L);
+
+      oTabStrip1.placeAt("content");
+      console.log("###END###", "RFC Data Parsing", "########");
+       oData=ocheckData;
+
+       }//success
+          
+
+});//ready
+</script>
+
+       </head>
+Show RFC Table/Json data dynamically - Author:mvk@ca.ibm.com - 2013-dec-02 - v0.11
+       <body class="sapUiBody" role="application">
+
+     <div id="content"></div>
+
+     </body>
+</html>

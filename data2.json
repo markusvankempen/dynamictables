@@ -1,0 +1,34 @@
+{
+    "EMAILFROMIT105": "",
+    "EMAILFROMSU01": "mvk@ca.ibm.com",
+    "PHOTOURL": "http://www.ibm.com",
+    "RECFOUND": 19,
+    "SCEMAILADDR": "",
+    "WICOUNT": 4,
+    "DATEFORMATSTBL": [
+        {
+            "DOMNAME": "XUDATFM",
+            "VALPOS": "0001",
+            "DDLANGUAGE": "E",
+            "DOMVALUE_L": "1",
+            "DOMVALUE_H": "",
+            "DDTEXT": "DD.MM.YYYY",
+            "DOMVAL_LD": "",
+            "DOMVAL_HD": "",
+            "APPVAL": "",
+            "APPVAL": ""
+        },
+        {
+            "DOMNAME": "XUDATFM",
+            "VALPOS": "0002",
+            "DDLANGUAGE": "E",
+            "DOMVALUE_L": "2",
+            "DOMVALUE_H": "",
+            "DDTEXT": "MM/DD/YYYY",
+            "DOMVAL_LD": "",
+            "DOMVAL_HD": "",
+            "APPVAL": "",
+            "NIXL": "NIX"
+        }
+       ]
+}

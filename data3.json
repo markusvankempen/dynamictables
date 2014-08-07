@@ -1,0 +1,300 @@
+{
+    "EMAILFROMIT105": "mvk@ca.ibm.com",
+    "EMAILFROMSU01": "Markus.o.Van.Kempen@ca.ibm.com",
+    "PHOTOURL": "http://www.ibm.com/",
+    "RECFOUND": 19,
+    "SCEMAILADDR": "hr@ibm.com",
+    "WICOUNT": 4,
+    "DATEFORMATSTBL": [
+        {
+            "DOMNAME": "XUDATFM",
+            "VALPOS": "0001",
+            "DDLANGUAGE": "E",
+            "DOMVALUE_L": "1",
+            "DOMVALUE_H": "",
+            "DDTEXT": "DD.MM.YYYY",
+            "DOMVAL_LD": "",
+            "DOMVAL_HD": "",
+            "APPVAL": ""
+        },
+        {
+            "DOMNAME": "XUDATFM",
+            "VALPOS": "0002",
+            "DDLANGUAGE": "E",
+            "DOMVALUE_L": "2",
+            "DOMVALUE_H": "",
+            "DDTEXT": "MM/DD/YYYY",
+            "DOMVAL_LD": "",
+            "DOMVAL_HD": "",
+            "APPVAL": ""
+        },
+        {
+            "DOMNAME": "XUDATFM",
+            "VALPOS": "0003",
+            "DDLANGUAGE": "E",
+            "DOMVALUE_L": "3",
+            "DOMVALUE_H": "",
+            "DDTEXT": "MM-DD-YYYY",
+            "DOMVAL_LD": "",
+            "DOMVAL_HD": "",
+            "APPVAL": ""
+        },
+        {
+            "DOMNAME": "XUDATFM",
+            "VALPOS": "0004",
+            "DDLANGUAGE": "E",
+            "DOMVALUE_L": "4",
+            "DOMVALUE_H": "",
+            "DDTEXT": "YYYY.MM.DD",
+            "DOMVAL_LD": "",
+            "DOMVAL_HD": "",
+            "APPVAL": ""
+        },
+        {
+            "DOMNAME": "XUDATFM",
+            "VALPOS": "0005",
+            "DDLANGUAGE": "E",
+            "DOMVALUE_L": "5",
+            "DOMVALUE_H": "",
+            "DDTEXT": "YYYY/MM/DD",
+            "DOMVAL_LD": "",
+            "DOMVAL_HD": "",
+            "APPVAL": ""
+        },
+        {
+            "DOMNAME": "XUDATFM",
+            "VALPOS": "0006",
+            "DDLANGUAGE": "E",
+            "DOMVALUE_L": "6",
+            "DOMVALUE_H": "",
+            "DDTEXT": "YYYY-MM-DD",
+            "DOMVAL_LD": "",
+            "DOMVAL_HD": "",
+            "APPVAL": ""
+        },
+        {
+            "DOMNAME": "XUDATFM",
+            "VALPOS": "0007",
+            "DDLANGUAGE": "E",
+            "DOMVALUE_L": "7",
+            "DOMVALUE_H": "",
+            "DDTEXT": "GYY.MM.DD     (Japanese Date)",
+            "DOMVAL_LD": "",
+            "DOMVAL_HD": "",
+            "APPVAL": ""
+        },
+        {
+            "DOMNAME": "XUDATFM",
+            "VALPOS": "0008",
+            "DDLANGUAGE": "E",
+            "DOMVALUE_L": "8",
+            "DOMVALUE_H": "",
+            "DDTEXT": "GYY/MM/DD     (Japanese Date)",
+            "DOMVAL_LD": "",
+            "DOMVAL_HD": "",
+            "APPVAL": ""
+        },
+        {
+            "DOMNAME": "XUDATFM",
+            "VALPOS": "0009",
+            "DDLANGUAGE": "E",
+            "DOMVALUE_L": "9",
+            "DOMVALUE_H": "",
+            "DDTEXT": "GYY-MM-DD     (Japanese Date)",
+            "DOMVAL_LD": "",
+            "DOMVAL_HD": "",
+            "APPVAL": ""
+        },
+        {
+            "DOMNAME": "XUDATFM",
+            "VALPOS": "0010",
+            "DDLANGUAGE": "E",
+            "DOMVALUE_L": "A",
+            "DOMVALUE_H": "",
+            "DDTEXT": "YYYY/MM/DD   (Islamic Date 1)",
+            "DOMVAL_LD": "",
+            "DOMVAL_HD": "",
+            "APPVAL": ""
+        },
+        {
+            "DOMNAME": "XUDATFM",
+            "VALPOS": "0011",
+            "DDLANGUAGE": "E",
+            "DOMVALUE_L": "B",
+            "DOMVALUE_H": "",
+            "DDTEXT": "YYYY/MM/DD   (Islamic Date 2)",
+            "DOMVAL_LD": "",
+            "DOMVAL_HD": "",
+            "APPVAL": ""
+        },
+        {
+            "DOMNAME": "XUDATFM",
+            "VALPOS": "0012",
+            "DDLANGUAGE": "E",
+            "DOMVALUE_L": "C",
+            "DOMVALUE_H": "",
+            "DDTEXT": "YYYY/MM/DD   (Iranian Date)",
+            "DOMVAL_LD": "",
+            "DOMVAL_HD": "",
+            "APPVAL": ""
+        }
+    ],
+    "DECIMALFORMATSTBL": [
+        {
+            "DOMNAME": "XUDCPFM",
+            "VALPOS": "0001",
+            "DDLANGUAGE": "E",
+            "DOMVALUE_L": "",
+            "DOMVALUE_H": "",
+            "DDTEXT": "1.234.567,89",
+            "DOMVAL_LD": "",
+            "DOMVAL_HD": "",
+            "APPVAL": ""
+        },
+        {
+            "DOMNAME": "XUDCPFM",
+            "VALPOS": "0002",
+            "DDLANGUAGE": "E",
+            "DOMVALUE_L": "X",
+            "DOMVALUE_H": "",
+            "DDTEXT": "1,234,567.89",
+            "DOMVAL_LD": "",
+            "DOMVAL_HD": "",
+            "APPVAL": ""
+        },
+        {
+            "DOMNAME": "XUDCPFM",
+            "VALPOS": "0003",
+            "DDLANGUAGE": "E",
+            "DOMVALUE_L": "Y",
+            "DOMVALUE_H": "",
+            "DDTEXT": "1 234 567,89",
+            "DOMVAL_LD": "",
+            "DOMVAL_HD": "",
+            "APPVAL": ""
+        }
+    ],
+    "LANGUAGETBL": [
+        {
+            "MANDT": "100",
+            "COUNTRYGRP": "10",
+            "COUNTRY": "US",
+            "LANGUAGE": "EN",
+            "DATFM": "2",
+            "SCEMAILADDR": "mvk@ca.ibm.com"
+        },
+        {
+            "MANDT": "100",
+            "COUNTRYGRP": "10",
+            "COUNTRY": "US",
+            "LANGUAGE": "ES",
+            "DATFM": "1",
+            "SCEMAILADDR": "mvk@ca.ibm.com"
+        }
+    ],
+    "USERSYSTEMDATATBL": [
+        {
+            "FIRSTNAME": "Markus",
+            "LASTNAME": "Van Kempen",
+            "FULLNAME": "Markus Van Kempen",
+            "HRLASTNAME": "van Kempen-ecc",
+            "HRFIRSTNAME": "Markus-ecc",
+            "HRFULLNAME": "Mr Markus-ecc van Kempen-ecc",
+            "COUNTRYGROUPING": "10",
+            "COUNTRY": "CAN",
+            "COUNTRYISO": "CA",
+            "LANGU_ISO": "EN",
+            "DATFM": "1",
+            "DCPFM": "",
+            "DATFMTTXT": "DD.MM.YYYY",
+            "DECFMTTXT": "1.234.567,89",
+            "BUKRS": "1000"
+        }
+    ],
+    "FLATTBL": [
+        {
+            "FIRSTNAME": "Markus",
+            "LASTNAME": "Van Kempen",
+            "FULLNAME": "Markus Van Kempen",
+            "HRLASTNAME": "van Kempen-ecc",
+            "HRFIRSTNAME": "Markus-ecc",
+            "HRFULLNAME": "Mr Markus-ecc van Kempen-ecc",
+            "COUNTRYGROUPING": "10",
+            "COUNTRY": "CAN",
+            "COUNTRYISO": "CA",
+            "LANGU_ISO": "EN",
+            "DATFM": "1",
+            "DCPFM": "",
+            "DATFMTTXT": "DD.MM.YYYY",
+            "DECFMTTXT": "1.234.567,89",
+            "BUKRS": "1000"
+        }
+    ],
+    "MULTITBL": [
+        {
+            "FIRSTNAME": "Markus",
+            "LASTNAME": "Van Kempen",
+            "FULLNAME": "Markus Van Kempen",
+            "HRLASTNAME": "van Kempen-ecc",
+            "HRFIRSTNAME": "Markus-ecc",
+            "HRFULLNAME": "Mr Markus-ecc van Kempen-ecc",
+            "COUNTRYGROUPING": "10",
+            "COUNTRY": "CAN",
+            "COUNTRYISO": "CA",
+            "LANGU_ISO": "EN",
+            "DATFM": "1",
+            "DCPFM": "",
+            "DATFMTTXT": "DD.MM.YYYY",
+            "DECFMTTXT": "1.234.567,89",
+            "BUKRS": "1000"
+        },
+        {
+            "FIRSTNAME": "Markus1",
+            "LASTNAME": "Van Kempen1",
+            "FULLNAME": "Markus Van Kempen",
+            "HRLASTNAME": "van Kempen-ecc",
+            "HRFIRSTNAME": "Markus-ecc",
+            "HRFULLNAME": "Mr Markus-ecc van Kempen-ecc",
+            "COUNTRYGROUPING": "10",
+            "COUNTRY": "CAN",
+            "COUNTRYISO": "CA",
+            "LANGU_ISO": "EN",
+            "DATFM": "1",
+            "DCPFM": "",
+            "DATFMTTXT": "DD.MM.YYYY",
+            "DECFMTTXT": "1.234.567,89",
+            "BUKRS": "1000"
+        }
+    ],
+    "RETURNTBL": [
+        {
+            "TYPE": "I",
+            "ID": "ZMVK",
+            "NUMBER": "999",
+            "MESSAGE": "I:ZMVK:999 Getting most recent WDA apps used",
+            "LOG_NO": "201311081744",
+            "LOG_MSG_NO": "000000",
+            "MESSAGE_V1": "Getting most recent WDA apps used",
+            "MESSAGE_V2": "",
+            "MESSAGE_V3": "",
+            "MESSAGE_V4": "",
+            "PARAMETER": "",
+            "ROW": 0,
+            "FIELD": ""
+        },
+        {
+            "TYPE": "S",
+            "NUMBER": "001",
+            "MESSAGE": "RFC successfully executed",
+            "LOG_NO": "201311081744",
+            "LOG_MSG_NO": "000000",
+            "MESSAGE_V1": "Getting most recent WDA apps used",
+            "MESSAGE_V2": "",
+            "MESSAGE_V3": "",
+            "MESSAGE_V4": "",
+            "PARAMETER": "",
+            "ROW": 0,
+            "FIELD": ""
+        }
+    ]
+}
