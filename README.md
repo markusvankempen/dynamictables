@@ -3,8 +3,7 @@ dynamictables
 
 dynamic table/parameter display uising ui5 and json
 
-<!--
-* * 
+ * 
 * This program display the export and table json parameters dynamically
 * Author: Markus van Kempen - mvk@ca.ibm.com
 *
