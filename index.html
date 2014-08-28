@@ -54,7 +54,7 @@ data/json structure is like (sap/mfcall/ZMVKRFCEXAMPLE?format=json)
 //alert("start");
 $(document).ready(function () {
     //        jQuery.sap.log.setLevel(jQuery.sap.log.LogLevel['INFO']);
-    console.log("###Sart", "RFC Data Parsing", "########");
+    console.log("####:Sart RFC /Service Data Parsing ########");
     // 1st Level Parameter Table tab (EXPORTPARAM -Fixed name)
     var oTable1L = new sap.ui.table.Table("oTable1L", {
         title: "EXPORTPARAM",
@@ -86,18 +86,8 @@ $(document).ready(function () {
         //      {KEY: "k", VALUE: "v"}
         ]
     };
-    var oTBL = {
-        TBL: [
-        //      {KEY: "k", VALUE: "v"}
-        ]
-    };
 
-    var ooTBL = {
-        TBL: [
-        //      {KEY: "k", VALUE: "v"}
-        ]
-    };
-
+// Example Data 
     var olocaleTestData = {
         "EXPORTPARA1": "Hello",
             "EXPORTPARA2": "World",
@@ -148,13 +138,13 @@ $(document).ready(function () {
     var oModel = new sap.ui.model.json.JSONModel();
     sap.ui.getCore().setModel(oModel);
 
-    console.log("Query", "JSON CALL", "########");
+    console.log("####:Query JSON(P) CALL");
 
     $.ajax({
 //url: "http://api.openweathermap.org/data/2.5/weather?q=Toronto&mode=json&units=metric&callback=getJSON",
 
        url: "http://sapui5.mybluemix.net/data0.jsonp",
-
+//url: "http://services.odata.org/V3/Northwind/Northwind.svc/Orders?$format=json&$callback=getJSON",
         //			url: "data0.json",	 // added structure		
         //			url: "data2.json",
         //			url: "data3.json", // complex data
@@ -186,18 +176,59 @@ $(document).ready(function () {
         //       if (typeof oMyData.RETURNTBL == "undefined")
         //        alert ('Valid NO DATA');
 
-        console.log("####", " Parsing the Data", eval("oMyData.length"));
+        console.log("####: Parsing the Data");
 
         var oTable = [];
         var oTableSR = [];
         var oTableOR = [];
         $.each(oMyData, function (name, value) {
-            console.log("####TABLE", "NAME:" + name, name + ".length:" + eval("oMyData." + name + ".length"));
+            console.log("####: TABLE - NAME:" + name );
             // A Table with mutltile rows ?    	  
-            if ((eval("oMyData." + name + ".length") > 1) && (jQuery.type(value) == "array")) {
-                console.log("####TABLE", "MultipleROW", jQuery.type(value));
+            if (jQuery.type(value) == "array") { 
 
-                //			         console.log ("####CreateMultipleROWTableUI",name +":" , jQuery.type(value));
+				if (eval("oMyData." + name + ".length") == "undefined") 
+				{
+				}else if (eval("oMyData." + name + ".length") == 1){// Singel Row Array
+                console.log("####: TABLE SingeleROW Type: "+jQuery.type(value)+ " SIZE: " + eval("oMyData." + name + ".length"));
+              eval("var " + name + "=  {" + name + ":[]};");
+                oTableSR[name] = new sap.ui.table.Table(name, {
+                    title: name,
+                    visibleRowCount: 15,
+                    firstVisibleRow: 0,
+                });
+                oTableSR[name].addColumn(new sap.ui.table.Column({
+                    label: new sap.ui.commons.Label({
+                        text: "FIELDNAMES"
+                    }),
+                    template: new sap.ui.commons.Label().bindProperty("text", "FIELDNAMES"),
+                    sortProperty: "FIELDNAMES",
+                    filterProperty: "FIELDNAMES",
+                    width: "20%"
+                }));
+                oTableSR[name].addColumn(new sap.ui.table.Column({
+                    label: new sap.ui.commons.Label({
+                        text: "VALUES"
+                    }),
+                    template: new sap.ui.commons.TextField().bindProperty("value", "VALUES"),
+                    sortProperty: "VALUES",
+                    filterProperty: "VALUES",
+                    width: "75%"
+                }));
+
+
+                    $.each(value, function () {
+                        $.each(this, function (k, v) {
+                            eval(name + "." + name + ".push({FIELDNAMES: k, VALUES: v})");
+                        });
+                    });
+                eval("oMyData = jQuery.extend(oMyData," + name + ")");
+                oTableSR[name].bindRows("/" + name);
+                oTabStrip1.createTab(name, oTableSR[name]);				
+
+		}else if (eval("oMyData." + name + ".length") > 1){
+
+                console.log("####: TABLE MultipleROW Type: "+jQuery.type(value)+ " SIZE: " + eval("oMyData." + name + ".length"));
+
                 oTable[name] = new sap.ui.table.Table(name, {
                     title: name,
                     visibleRowCount: 15,
@@ -223,11 +254,18 @@ $(document).ready(function () {
 
                 oTable[name].bindRows("/" + name);
                 oTabStrip1.createTab(name, oTable[name]);
+	
+}//if (eval("oMyData." + name + ".length") == "undefined") 
 
+            } else if (jQuery.type(value) == "object") { // some sort of object display as tab
 
-            } else if (jQuery.type(value) == "object" || ((eval("oMyData." + name + ".length") == 1) && (jQuery.type(value) == "array"))) { // some sort of object display as tab
+ console.log("####: Object SINGELROW: " + name);
 
-                console.log("####" + name + " SINGELROW" + "  Type:" + jQuery.type(value), "SIZE:" + eval("oMyData." + name + ".length"));
+				if (eval("oMyData." + name + ".length") == "undefined") 
+	                console.log("####" + name + " SINGELROW Array" + "  Type:" + jQuery.type(value)+ "SIZE:" + eval("oMyData." + name + ".length"));
+				else
+	                console.log("####" + name + " SINGELROW Object" + "  Type:" + jQuery.type(value));
+
                 eval("var " + name + "=  {" + name + ":[]};");
                 oTableSR[name] = new sap.ui.table.Table(name, {
                     title: name,
@@ -253,31 +291,23 @@ $(document).ready(function () {
                     width: "75%"
                 }));
 
-                if (jQuery.type(value) == "array") {
-                    $.each(value, function () {
-                        $.each(this, function (k, v) {
-                            eval(name + "." + name + ".push({FIELDNAMES: k, VALUES: v})");
-                        });
-                    });
-                } else {
-                    $.each(value, function (k, v) {
+                 $.each(value, function (k, v) {
                         eval(name + "." + name + ".push({FIELDNAMES: k, VALUES: v})");
                     });
-                }
+                
                 eval("oMyData = jQuery.extend(oMyData," + name + ")");
                 oTableSR[name].bindRows("/" + name);
-                oTabStrip1.createTab(name, oTableSR[name]);
-
+                oTabStrip1.createTab(name, oTableSR[name]);				
 
 
             } else {
-                console.log("####EXPORTPARM", name, value);
+                console.log("####: EXPORTPARM: " + name +" Value:"+ value);
                 oEXPORTPARAM.EXPORTPARAMTBL.push({
                     FIELDNAMES: name,
                     VALUES: value
                 });
 
-                console.log("####:" + name + "  Type:" + jQuery.type(value), "SIZE:" + eval("oMyData." + name + ".length"));
+                console.log("####:" + name + "  Type:" + jQuery.type(value)); //, "SIZE:" + eval("oMyData." + name + ".length"));
             } //else
         }); //$.each(sap.ui.getCore().getModel().getData(),
 
@@ -289,7 +319,7 @@ $(document).ready(function () {
         oTabStrip1.createTab("EXPORTPARAM", oTable1L);
 
         oTabStrip1.placeAt("content");
-        console.log("###END###", "RFC Data Parsing", "########");
+        console.log("####:END Data Parsing ########");
         oMyData = ocheckData;
 
     } //success
