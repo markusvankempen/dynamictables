@@ -3,9 +3,8 @@ dynamictables
 
 dynamic table/parameter display uising ui5 and json
 
- * 
+* 
 * This program display the export and table json parameters dynamically
-* Author: Markus van Kempen - mvk@ca.ibm.com
 *
 data/json structure is like (sap/mfcall/ZMVKRFCEXAMPLE?format=json)
 {
@@ -42,4 +41,5 @@ data/json structure is like (sap/mfcall/ZMVKRFCEXAMPLE?format=json)
         }
     ]
 }
+
  Note: Table with one entry are displayed in two columns one with Key(fieldname) and one with Values
