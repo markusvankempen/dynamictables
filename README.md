@@ -1,45 +1,24 @@
 dynamictables
 =============
-
-dynamic table/parameter display uising ui5 and json
-
+dynamic table/parameter display using ui5 and json
 * 
 * This program display the export and table json parameters dynamically
 *
-data/json structure is like (sap/mfcall/ZMVKRFCEXAMPLE?format=json)
-{
-    "EXPORTPARA1": "Hello",
-    "EXPORTPARA2": "World",
-    "BIGSTRUCTURETBL": [
-        {
-            "FIELDNAME1": "TABREC11",
-            "FIELDNAME2": "TABREC12",
-            "FIELDNAME3": "TABREC13",
-            "FIELDNAME4": "TABREC14",
-            "FIELDNAME5": "TABREC15",
-            "FIELDNAME6": "TABREC16",
-            "FIELDNAME7": "TABREC17",
-            "FIELDNAME8": "TABREC18"
-        }
-    ],
-    "DATATBL": [
-        {
-            "FIELDNAME1": "VALUE 11",
-            "FIELDNAME2": "VALUE 12"
-        },
-        {
-            "FIELDNAME1": "VALUE 21",
-            "FIELDNAME2": "VALUE 22"
-        },
-        {
-            "FIELDNAME1": "VALUE 31",
-            "FIELDNAME2": "VALUE 32"
-        },
-        {
-            "FIELDNAME1": "VALUE 41",
-            "FIELDNAME2": "VALUE 42"
-        }
-    ]
-}
+* Note: Table with one entry are displayed in two columns one with Key(fieldname) and one with Values
+*  
 
- Note: Table with one entry are displayed in two columns one with Key(fieldname) and one with Values
+
+Reference:
+Jsfillder: http://jsfiddle.net/8mkcyrw4/22/
+JS Bin http://jsbin.com/qokoz/1/
+Github: https://github.com/markusvankempen/dynamictables
+Test Url: http://sapui5.mybluemix.net/
+
+Test Service Example:
+http://sapui5.mybluemix.net/data0.jsonp
+http://sapui5.mybluemix.net/data1.jsonp
+http://services.odata.org/V3/Northwind/Northwind.svc/Orders?$format=json&$callback=getJSON
+http://api.openweathermap.org/data/2.5/weather?q=Toronto&mode=json&units=metric&callback=getJSON
+
+Json ABAP adapter
+http://scn.sap.com/community/abap/connectivity/blog/2013/03/05/json-adapter-for-abap-function-modules
