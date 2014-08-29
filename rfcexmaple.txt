@@ -1,0 +1,50 @@
+FUNCTION ZMVKRFCEXAMPLE.
+*"----------------------------------------------------------------------
+*"*"Local Interface:
+*"  IMPORTING
+*"     VALUE(IMPORTPARA1) TYPE  CHAR10 DEFAULT '1'
+*"  EXPORTING
+*"     VALUE(EXPORTPARA1) TYPE  CHAR10
+*"     VALUE(EXPORTPARA2) TYPE  CHAR10
+*"  TABLES
+*"      DATATBL STRUCTURE  ZGLKEYVALUEPAIR OPTIONAL
+*"      BIGSTRUCTURETBL STRUCTURE  ZGLBIGSTRUCTURE OPTIONAL
+*"----------------------------------------------------------------------
+* Author: Markus van Kempebn - mvk@ca.ibm.com
+*
+* Example RFC for json(p) service test
+*
+*"----------------------------------------------------------------------
+DATA: wa_zmvk TYPE ZGLKEYVALUEPAIR.
+DATA: wa_zbig TYPE ZGLBIGSTRUCTURE.
+
+* Multiple Table entries
+ wa_zmvk-fieldname1 = 'VALUE 11'.
+ wa_zmvk-fieldname2 = 'VALUE 12'.
+ append   wa_zmvk to DATATBL.
+ wa_zmvk-fieldname1 = 'VALUE 21'.
+ wa_zmvk-fieldname2 = 'VALUE 22'.
+ append   wa_zmvk to DATATBL.
+ wa_zmvk-fieldname1 = 'VALUE 31'.
+ wa_zmvk-fieldname2 = 'VALUE 32'.
+ append   wa_zmvk to DATATBL.
+ wa_zmvk-fieldname1 = 'VALUE 41'.
+ wa_zmvk-fieldname2 = 'VALUE 42'.
+  append   wa_zmvk to DATATBL.
+
+* One Table entries
+  wa_zbig-fieldname1 = 'TABREC11'.
+  wa_zbig-fieldname2 = 'TABREC12'.
+  wa_zbig-fieldname3 = 'TABREC13'.
+  wa_zbig-fieldname4 = 'TABREC14'.
+  wa_zbig-fieldname5 = 'TABREC15'.
+  wa_zbig-fieldname6 = 'TABREC16'.
+  wa_zbig-fieldname7 = 'TABREC17'.
+  wa_zbig-fieldname8 = 'TABREC18'.
+
+    append   wa_zbig to BIGSTRUCTURETBL.
+
+    EXPORTPARA1 = 'Hello'.
+    EXPORTPARA2 = 'World'.
+
+ENDFUNCTION.
