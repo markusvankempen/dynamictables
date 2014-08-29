@@ -1,0 +1,80 @@
+SDN blog
+Markus van Kempen – mvk@ca.ibm.com
+Hello Everybody,
+ a couple of month ago I used Cesar’s  JSON Adapter to expose some data form function modules  as json. I wanted to test and display the different RFC’s and display their results using the same html page and ui5 javascript code.
+ The code ideally should be dynamic enough so that we could add/remove RFC Tables (Json data) or change and add elements to the RFC structure / json response. I also wanted to be able to consume other json service like Northwind or weather api calls  and display them using the same mechanics. To make the display of data easier; tables with just one row of data should be displayed transposed in two columns (Fieldname / Value) vs one long single row of data. Sometime there structures (in some RFC) are long and in most case these only return one how of data and then it is annoying to scroll to find the data.
+Also export parameters which are display in the json response should be collected and displayed under one tab e.g EXPORTPARAMETER to make it easier to find them.
+ Below what i came up with ...have fun with it.
+ Here an example of a rfc json out put: json(p) data
+Here JS Bin with the ui5 code
+Reference:
+Jsfillder: http://jsfiddle.net/8mkcyrw4/22/
+or JS Bin 
+Github: https://github.com/markusvankempen/dynamictables
+Test Url: http://sapui5.mybluemix.net/
+Test Service Example: 
+http://sapui5.mybluemix.net/data0.jsonp 
+http://sapui5.mybluemix.net/data1.jsonp 
+http://services.odata.org/V3/Northwind/Northwind.svc/Orders?$format=json&$callback=getJSON
+http://api.openweathermap.org/data/2.5/weather?q=Toronto&mode=json&units=metric&callback=getJSON
+Json ABAP adapter
+http://scn.sap.com/community/abap/connectivity/blog/2013/03/05/json-adapter-for-abap-function-modules
+…/sap/mfcall/ZMVKRFCEXAMPLE?format=json
+Here an example RFC result:
+ 
+ 
+ 
+Here the corresponding json response.
+{
+    "EXPORTPARA1": "Hello",
+    "EXPORTPARA2": "World",
+    "BIGSTRUCTURETBL": [
+        {
+            "FIELDNAME1": "TABREC11",
+            "FIELDNAME2": "TABREC12",
+            "FIELDNAME3": "TABREC13",
+            "FIELDNAME4": "TABREC14",
+            "FIELDNAME5": "TABREC15",
+            "FIELDNAME6": "TABREC16",
+            "FIELDNAME7": "TABREC17",
+            "FIELDNAME8": "TABREC18"
+        }
+    ],
+    "DATATBL": [
+        {
+            "FIELDNAME1": "VALUE 11",
+            "FIELDNAME2": "VALUE 12"
+        },
+        {
+            "FIELDNAME1": "VALUE 21",
+            "FIELDNAME2": "VALUE 22"
+        },
+        {
+            "FIELDNAME1": "VALUE 31",
+            "FIELDNAME2": "VALUE 32"
+        },
+        {
+            "FIELDNAME1": "VALUE 41",
+            "FIELDNAME2": "VALUE 42"
+        }
+    ]
+}
+
+UI5 result
+ 
+
+ 
+Reference:
+Jsfillder: http://jsfiddle.net/8mkcyrw4/22/
+Jsbin: http://jsbin.com/qokoz/1/edit
+Github: https://github.com/markusvankempen/dynamictables
+Test Url: http://sapui5.mybluemix.net/
+Test Service: 
+http://sapui5.mybluemix.net/data0.jsonp 
+http://sapui5.mybluemix.net/data1.jsonp 
+http://services.odata.org/V3/Northwind/Northwind.svc/Orders?$format=json&$callback=getJSON
+http://api.openweathermap.org/data/2.5/weather?q=Toronto&mode=json&units=metric&callback=getJSON
+
+
+Json ABAP adaptor 
+http://scn.sap.com/community/abap/connectivity/blog/2013/03/05/json-adapter-for-abap-function-modules
